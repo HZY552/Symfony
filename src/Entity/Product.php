@@ -23,6 +23,9 @@ class Product
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column]
+    private ?int $client_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Product
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getClientId(): ?int
+    {
+        return $this->client_id;
+    }
+
+    public function setClientId(int $client_id): self
+    {
+        $this->client_id = $client_id;
 
         return $this;
     }
