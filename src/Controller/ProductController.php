@@ -17,6 +17,7 @@ class ProductController extends AbstractController
         $product->setName('Keyboard');
         $product->setPrice(1999);
         $product->setDescription('Ergonomic and stylish!');
+        $product->setClientId(1);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($product);

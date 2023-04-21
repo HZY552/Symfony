@@ -9,3 +9,4 @@ kernel:
 index:
     path: /index
     controller: App/IndexController::index
+
