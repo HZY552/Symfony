@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QuiSommeNousController!{% endblock %}
+
+{% block body %}
+    <main style="margin-top: 70px">
+
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" data-bs-theme="light">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item" style="background-image: url({{ asset('images/font_qui_somme_nous.jpeg') }});height: 700px;background-repeat: no-repeat;background-size: cover;">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Qui Somme Nous</h1>
+                            <p class="opacity-75">Ce site est conçu par un freelance pour offrir des services de qualité.</p>
+                            <p><a class="btn btn-lg btn-primary" id="qui_somme_nous">En savoir plus</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item active" style="background-image: url({{ asset('images/font_qui_somme_nous1.jpeg') }});height: 700px;background-repeat: no-repeat;background-size: cover;">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Nos Services</h1>
+                            <p>Nous proposons une gamme complète de services dans le domaine du freelance, y compris le développement web, le design graphique et la rédaction de contenu.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Découvrir nos services</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url({{ asset('images/font_qui_somme_nous2.jpg') }});height: 700px;background-repeat: no-repeat;background-size: cover;">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>Contactez-nous</h1>
+                            <p>N'hésitez pas à nous contacter pour toute demande de renseignements ou de collaboration. Nous serons ravis de vous aider !</p>
+                            <p><a class="btn btn-lg btn-primary" href="/contact">Nous contacter</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="container marketing pt-5">
+            <h1 class="pb-5">Top Freelance</h1>
+            <div class="row">
+                {% for freelance in top_freelance %}
+                    <div class="col-lg-4">
+                        {% if freelance.getUser().getAvatar() %}
+                            <img src="{{ asset( 'avatars/' ~ freelance.getUser().getAvatar() ) }}"  alt="avatars" style="max-width: 300px;height: 300px;border-radius: 50%; min-height: 300px;min-width: 300px;">
+                        {% else %}
+                            <img src="{{ asset('avatars/default-avatar.png') }}" alt="Default Avatar">
+                        {% endif %}
+                        <h2 class="fw-normal">{{ freelance.getUser().getFullName() }}</h2>
+                        <p>{{ freelance.getDescription() | slice(0, 200) ~ ' ...'}}</p>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary mb-3 px-3">{{ '€ ' ~ freelance.getPrice()}}</span>
+                            <span class="badge bg-primary mb-3 px-3 ms-2">{{ freelance.getSkills()}}</span>
+                        </div>
+                        <p><a class="btn btn-secondary" href={{ "/freelance/" ~ freelance.getUser().getId() }}>En savoir plus »</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1 mb-5">C’est avant tout<span class="text-body-secondary"> une communauté</span></h2>
+                    <p class="lead">Où freelances et entreprises se retrouvent sur une marketplace, pour collaborer en toute simplicité.
+                        Recevez des offres de missions en adéquation avec vos compétences et communiquez directement avec 50 000 clients potentiels issus de tous les secteurs. réduisez vos tâches administratives à l'aide de nos outils en ligne ; faites-vous payer en 3 jours ouvrables à compter de la fin de la mission ; et gardez l'esprit tranquille : toutes vos missions sont automatiquement garanties. Cerise sur le gâteau : notre équipe dédiée aux freelances vous aide à développer votre carrière à l'aide de ressources spécialisées, de partenariats, d'évènements et de programmes de peer learning.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ asset('images/qui_somme_nous.png') }}" style="max-width: 500px;max-height: 500px;min-width: 500px;min-height: 500px;" alt="qui_somme_nous.png">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1 mb-5">Trouvez le bon profil<span class="text-body-secondary"> en deux clics</span></h2>
+                    <p class="lead">Partez à la recherche de votre expert parmi nos 400 000 talentueux freelances ou entrez en contact avec les meilleurs profils disponibles pour votre projet. Consultez les avis et expériences, et discutez directement avec les freelances pour pouvoir les recruter en quelques clics. Nous vous garantissons une collaboration simple et sécurisée, avec des contrats et un processus de paiement entièrement digitalisés. Trouvez votre expert, nous nous occupons du reste.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img src="{{ asset('images/qui_somme_nous1.png') }}" style="max-width: 500px;max-height: 500px;min-width: 500px;min-height: 500px;" alt="qui_somme_nous.png">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Centralisez vos freelances préférés dans <span class="text-body-secondary">une même solution</span></h2>
+                    <p class="lead">Vous collaborez régulièrement avec plusieurs freelances ? Simplifiez et regroupez toutes vos activités avec des freelances dans un seul outil. Suivez et gérez les dépenses de votre structure, obtenez des aperçus de missions et suivez vos contrats en cours, en temps réel. Une solution de gestion à 360° pour tous vos freelances, qu'ils soient déjà sur Malt ou non.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ asset('images/font_qui_somme_nous2.jpeg') }}" style="max-width: 500px;max-height: 500px;min-width: 500px;min-height: 500px;" alt="qui_somme_nous.png">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+        </div>
+    </main>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+
+            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+        </footer>
+    </div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RechercherController!{% endblock %}
+
+{% block body %}
+
+    <main style="margin-top: 70px">
+
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;position: fixed;top: 70px;height: 93%;">
+            <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4">Options</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto" style="gap: 20px;">
+                <li class="nav-item">
+                    <button id="p-c" class="btn btn-primary px-3 w-100" type="button">Prix : Ordre croissant</button>
+                </li>
+                <li>
+                    <button id="pd-c" class="btn btn-primary px-3 w-100" type="button">Prix : Ordre décroissant</button>>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container marketing pt-5">
+
+            {% if resultCount > 0 %}
+                <h1 class="pb-5">Plus de {{ resultCount }} freelances “{{ key }}" disponibles</h1>
+                <div class="row">
+                        <div class="row">
+                            {% for freelance in freelances %}
+                                <div class="col-lg-4">
+                                    {% if freelance.getAvatar() %}
+                                        <img src="{{ asset( 'avatars/' ~ freelance.getAvatar() ) }}"  alt="avatars" style="max-width: 300px;height: 300px;border-radius: 50%; min-height: 300px;min-width: 300px;">
+                                    {% else %}
+                                        <img src="{{ asset('avatars/default-avatar.png') }}" alt="Default Avatar">
+                                    {% endif %}
+                                    <h2 class="fw-normal">{{ freelance.getFullName() }}</h2>
+                                    <p>{{ freelance.getFreelancerProfile().getDescription() | slice(0, 200) ~ ' ...'}}</p>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-primary mb-3 px-3">{{ '€ ' ~ freelance.getFreelancerProfile().getPrice()}}</span>
+                                        <span class="badge bg-primary mb-3 px-3 ms-2">{{ freelance.getFreelancerProfile().getSkills()}}</span>
+                                    </div>
+                                    <p><a class="btn btn-secondary" href={{ "/freelance/" ~ freelance.getId() }}>En savoir plus »</a></p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                </div>
+            {% else %}
+                <h1 class="pb-5">{{ resultCount }} freelances “{{ key }}" disponibles</h1>
+                <div class="container px-4 py-5">
+                    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                        <div class="col-10 col-sm-8 col-lg-6">
+                            <img src="{{ asset('images/font_qui_somme_nous.jpeg') }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                        </div>
+                        <div class="col-lg-6">
+                            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Pour augmenter vos chances d'obtenir des résultats vous pouvez :</h1>
+                            <p class="lead"> - Élargir votre périmètre de recherche </br>
+                                - Faire une recherche moins precise avec moins de mots clefs </br>
+                                - Rentrer le nom et prénom ou profession exacts du freelance si vous souhaitez retrouver un profil bien précis</p>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                <a href="/">
+                                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Home</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </main>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+
+            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+        </footer>
+    </div>
+
+
+
+{% endblock %}

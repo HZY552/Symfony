@@ -1,0 +1,48 @@
+<div class="col-md-9 p-5" style="overflow-y: auto;">
+    {{ form_start(form_freelance_info, {'attr': {'class': 'w-100 h-100 p-3'}}) }}
+    <h1 class="h3 mb-3 fw-normal">Mes Informations</h1>
+    <div class="form-floating">
+        <div class="form-group my-3">
+            {{ form_label(form_freelance_info.Skills, 'Skills', {'label_attr': {'class': 'form-label'}}) }}
+            {% if freelanceprofile is not null and freelanceprofile.getSkills() is not empty %}
+                {{ form_widget(form_freelance_info.Skills, {'attr': {'class': 'form-control pt-3 pb-3','value': freelanceprofile.getSkills()}}) }}
+            {% else %}
+                {{ form_widget(form_freelance_info.Skills, {'attr': {'class': 'form-control pt-3 pb-3','placeholder': 'Skills'}}) }}
+            {% endif %}
+            {{ form_errors(form_freelance_info.Skills) }}
+        </div>
+        <div class="form-group my-3">
+            {{ form_label(form_freelance_info.Portfolio, 'Portfolio', {'label_attr': {'class': 'form-label'}}) }}
+            {% if freelanceprofile is not null and freelanceprofile.getPortfolio() is not empty %}
+                {{ form_widget(form_freelance_info.Portfolio, {'attr': {'class': 'form-control pt-3 pb-3','value': freelanceprofile.getPortfolio()}}) }}
+            {% else %}
+                {{ form_widget(form_freelance_info.Portfolio, {'attr': {'class': 'form-control pt-3 pb-3','placeholder': 'Portfolio'}}) }}
+            {% endif %}
+            {{ form_errors(form_freelance_info.Portfolio) }}
+        </div>
+
+        <div class="form-group my-3">
+            {{ form_label(form_freelance_info.Price, 'Price', {'label_attr': {'class': 'form-label'}}) }}
+            {% if freelanceprofile is not null and freelanceprofile.getPrice() is not empty %}
+                {{ form_widget(form_freelance_info.Price, {'attr': {'class': 'form-control pt-3 pb-3','value': freelanceprofile.getPrice()}}) }}
+            {% else %}
+                {{ form_widget(form_freelance_info.Price, {'attr': {'class': 'form-control pt-3 pb-3','placeholder': 'Price'}}) }}
+            {% endif %}
+            {{ form_errors(form_freelance_info.Price) }}
+        </div>
+
+        <div class="form-group my-3">
+            {{ form_label(form_freelance_info.Description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+            {% if freelanceprofile is not null and freelanceprofile.getDescription() is not empty %}
+                {{ form_widget(form_freelance_info.Description, {'attr': {'class': 'form-control pt-3 pb-3','value': freelanceprofile.getDescription()}}) }}
+            {% else %}
+                {{ form_widget(form_freelance_info.Description, {'attr': {'class': 'form-control pt-3 pb-3', 'placeholder': 'Description'}}) }}
+            {% endif %}
+            {{ form_errors(form_freelance_info.Description) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-2">Sauvegarder</button>
+    </div>
+
+    {{ form_end(form_freelance_info) }}
+</div>
