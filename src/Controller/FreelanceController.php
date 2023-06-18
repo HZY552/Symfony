@@ -48,6 +48,12 @@ class FreelanceController extends AbstractController
             }
         }
 
+        $buttonClicked = $request->request->get('buttonClicked');
+
+        if ($buttonClicked === 'true') {
+            return $this->redirectToRoute('app_commande', ['freelanceId' => $freelancer->getId()]);
+        }
+
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
 

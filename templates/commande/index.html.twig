@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommandeController!{% endblock %}
+
+{% block body %}
+    <style>
+        select{
+            border: 1px rgba(153, 153, 153, 0.6) solid;
+            border-radius: 5px;
+            width: 32%;
+            padding: 10px 10px;
+            font-size: 1.1rem;
+            margin-left: 5px;
+        }
+    </style>
+    <div class="container" style="margin-top: 150px;">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="{{ asset('images/font_qui_somme_nous2.jpeg') }}" alt="" width="200" height="200">
+                <h2>Ma proposition de mission</h2>
+                <p class="lead">{{ freelancer.getUser().getFullName }} a besoin de comprendre les contours et conditions de la mission afin de vous faire parvenir un devis. Transmettez-lui l'ensemble des éléments utiles.</p>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Votre carte</span>
+                        <span class="badge bg-primary rounded-pill">3</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Nom du produit</h6>
+                                <small class="text-body-secondary">Bref description</small>
+                            </div>
+                            <span class="text-body-secondary">12€</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Second produit</h6>
+                                <small class="text-body-secondary">Bref description</small>
+                            </div>
+                            <span class="text-body-secondary">$8</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Troisième produit</h6>
+                                <small class="text-body-secondary">Brief description</small>
+                            </div>
+                            <span class="text-body-secondary">5€</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                            <div class="text-success">
+                                <h6 class="my-0">CODE PROMO</h6>
+                                <small>Exemple de code</small>
+                            </div>
+                            <span class="text-success">−5€</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (EUR)</span>
+                            <strong>20€</strong>
+                        </li>
+                    </ul>
+
+                    <form class="card p-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Promo code">
+                            <button type="submit" class="btn btn-secondary">ACCEPTER</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Adresse de facturation</h4>
+
+
+                    {{ form_start(form) }}
+                    <div class="form-floating">
+                        <div class="form-group my-3">
+                            {{ form_label(form.start_date, 'Début de la mission', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.start_date, {'attr': {'class': 'form-control pt-3 pb-3'}}) }}
+                            {{ form_errors(form.start_date) }}
+                        </div>
+                        <div class="form-group my-3">
+                            {{ form_label(form.end_date, 'Fin de la mission', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.end_date, {'attr': {'class': 'form-control pt-3 pb-3'}}) }}
+                            {{ form_errors(form.end_date) }}
+                        </div>
+
+                        <div class="form-group my-3">
+                            {{ form_label(form.poste, 'Intitulé du poste', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.poste, {'attr': {'class': 'form-control pt-3 pb-3'}}) }}
+                            {{ form_errors(form.poste) }}
+                        </div>
+
+                        <div class="form-group my-3">
+                            {{ form_label(form.objet, 'Objet de la mission', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.objet, {'attr': {'class': 'form-control pt-3 pb-3'}}) }}
+                            {{ form_errors(form.objet) }}
+                        </div>
+
+                        <div class="form-group my-3">
+                            {{ form_label(form.discription_mission, 'Description de la mission', {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.discription_mission, {'attr': {'class': 'form-control pt-3 pb-3'}}) }}
+                            {{ form_errors(form.discription_mission) }}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2">Continuer</button>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </main>
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+
+            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+        </footer>
+
+    </div>
+{% endblock %}

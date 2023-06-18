@@ -7,24 +7,24 @@
             <label class="form-control pt-3 pb-3">{{ user.getEmail() }}</label>
         </div>
         <div class="form-group my-3">
-            {{ form_label(registrationForm.Phone, 'Phone', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_label(registrationForm.Phone, 'Tel', {'label_attr': {'class': 'form-label'}}) }}
             {{ form_widget(registrationForm.Phone, {'attr': {'class': 'form-control pt-3 pb-3','value': user.getPhone()}}) }}
             {{ form_errors(registrationForm.Phone) }}
         </div>
         <div class="form-group my-3">
-            {{ form_label(registrationForm.Username, 'Username', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_label(registrationForm.Username, 'Prénom', {'label_attr': {'class': 'form-label'}}) }}
             {{ form_widget(registrationForm.Username, {'attr': {'class': 'form-control pt-3 pb-3','value': user.getUsername()}}) }}
             {{ form_errors(registrationForm.Username) }}
         </div>
 
         <div class="form-group my-3">
-            {{ form_label(registrationForm.full_name, 'Full name', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_label(registrationForm.full_name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
             {{ form_widget(registrationForm.full_name, {'attr': {'class': 'form-control pt-3 pb-3','value': user.getFullname()}}) }}
             {{ form_errors(registrationForm.full_name) }}
         </div>
 
         <div class="form-group my-3">
-            {{ form_label(registrationForm.location, 'Location', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_label(registrationForm.location, 'Adresse ', {'label_attr': {'class': 'form-label'}}) }}
             {{ form_widget(registrationForm.location, {'attr': {'class': 'form-control pt-3 pb-3','placeholder': user.getLocation()}}) }}
             {{ form_errors(registrationForm.location) }}
         </div>

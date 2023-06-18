@@ -14,12 +14,12 @@
                     </div>
                 </div>
                 <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-1">A Propose De Moi</h2>
+                    <h2 class="display-5 link-body-emphasis mb-1">A Propos De Moi</h2>
                     <p>{{ profile.getDescription() }}</p>
                 </article>
 
                 <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-1">Mes Educations</h2>
+                    <h2 class="display-5 link-body-emphasis mb-1">Mes diplomes </h2>
                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                         {% for e in education %}
                         <div class="d-flex text-body-secondary pt-3">
@@ -37,7 +37,7 @@
                 </article>
 
                 <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-1">Mes Commentaire</h2>
+                    <h2 class="display-5 link-body-emphasis mb-1">Mes Commentaires</h2>
 
                     <div class="my-3 p-3 bg-body rounded shadow-sm">
                         <h6 class="border-bottom pb-2 mb-0">Suggestions</h6>
@@ -68,13 +68,22 @@
 
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 6rem;">
+                    <form method="post" style="margin-bottom: 50px;">
+                        <input type="hidden" name="buttonClicked" value="true">
+                        <button class="btn btn-primary d-inline-flex align-items-center" type="submit">
+                            Proposer une mission
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-90deg-right" viewBox="0 0 16 16" style="margin-left: 10px;">
+                                <path fill-rule="evenodd" d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z"/>
+                            </svg>
+                        </button>
+                    </form>
                     <div class="p-4 mb-3 bg-body-tertiary rounded">
-                        <h4 class="fst-italic">A Propose</h4>
+                        <h4 class="fst-italic">A Propos</h4>
                         <p class="mb-0">{{ profile.getDescription() }}</p>
                     </div>
 
                     <div>
-                        <h4 class="fst-italic">Mes Educations</h4>
+                        <h4 class="fst-italic">Mes diplomes </h4>
                         <ul class="list-unstyled">
                             {% for e in education %}
                             <li>
@@ -105,11 +114,11 @@
             </a>
 
             <ul class="nav col-md-4 justify-content-end">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Fonctionnalités</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Tarifs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">A propos de nous</a></li>
             </ul>
         </footer>
     </div>

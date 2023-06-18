@@ -1,0 +1,88 @@
+{% block body %}
+    <div class="card w-50" style="margin: 0 auto; margin-top: 150px;">
+        <div class="card-header bg-black"></div>
+        <div class="card-body">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <i class="far fa-building text-danger fa-6x float-start"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+
+                        <ul class="list-unstyled float-end">
+                            <li style="font-size: 30px; color: red;">{{ invoice.getNCommande.getFreelancer.getFullName }}</li>
+                            <li>{{ invoice.getNCommande.getFreelancer.getLocation }}</li>
+                            <li>{{ invoice.getNCommande.getFreelancer.getPhone }}</li>
+                            <li>{{ invoice.getNCommande.getFreelancer.getEmail }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <h3 class="text-uppercase text-center mt-3" style="font-size: 40px;">Invoice</h3>
+                    <p>N° {{ invoice.getId }}</p>
+                </div>
+
+                <div class="row mx-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Poste</td>
+                            <td><i class="fas fa-dollar-sign"></i> {{ invoice.getNCommande.getPoste }}</td>
+                        </tr>
+                        <tr>
+                            <td>Unit Price</td>
+                            <td><i class="fas fa-dollar-sign"></i> {{ invoice.getNCommande.getUnitPrice }} €</td>
+                        </tr>
+                        <tr>
+                            <td>Start Date</td>
+                            <td><i class="fas fa-dollar-sign"></i> {{ invoice.getNCommande.getStartDate|date("Y-m-d") }} </td>
+                        </tr>
+                        <tr>
+                            <td>End Date</td>
+                            <td><i class="fas fa-dollar-sign"></i> {{ invoice.getNCommande.getEndDate|date("Y-m-d") }} </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="row">
+                    <div class="col-xl-8">
+                        <ul class="list-unstyled float-end me-0">
+                            <li><span class="me-3 float-start">Total Amount:</span><i class="fas fa-dollar-sign"></i>
+                                {{ invoice.getNCommande.getTotalPrice }} €
+                            </li>
+                            <li> <span class="me-5">Discount:</span><i class="fas fa-dollar-sign"></i> 0 €</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xl-8" style="margin-left:60px">
+                        <p class="float-end"
+                           style="font-size: 30px; color: red; font-weight: 400;font-family: Arial, Helvetica, sans-serif;">
+                            Total:
+                            <span><i class="fas fa-dollar-sign"></i> {{ invoice.getNCommande.getTotalPrice }} €</span></p>
+                    </div>
+
+                </div>
+
+                <div class="row mt-2 mb-5">
+                    <p class="fw-bold">Date: <span class="text-muted">{{ invoice.getNCommande.getCreateDate|date("Y-m-d") }} €</span></p>
+                    <p class="fw-bold mt-3" style="margin-bottom: 150px">Signature:</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-black"></div>
+    </div>
+{% endblock %}

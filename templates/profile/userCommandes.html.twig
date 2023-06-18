@@ -1,0 +1,57 @@
+<div class="table-responsive" style="margin: 0 auto; width: 80%;padding: 20px 20px;">
+    <table class="table caption-top">
+        <h3 class="w-100 mt-5 mb-5">Mes Commandes</h3>
+        <thead class="table-light">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Freelancer</th>
+            <th scope="col">Freelancer Email</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Date de début</th>
+            <th scope="col">Date de fin</th>
+            <th scope="col">Post</th>
+            <th scope="col">State</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <th scope="row">{{ commande.getId() }}</th>
+                <td>{{ commande.getBuyer().getUsername() }}</td>
+                <td>{{ commande.getFreelancer().getUsername() }}</td>
+                <td>{{ commande.getFreelancer().getUserIdentifier() }}</td>
+                <td>{{ commande.getTotalPrice() }}</td>
+                <td>{{ commande.getStartDate()|date('Y-m-d') }}</td>
+                <td>{{ commande.getEndDate()|date('Y-m-d') }}</td>
+                <td>{{ commande.getPoste() }}</td>
+                {% if commande.isState %}
+                    <td><span style="color: #1877f2;">Mission Fini</span></td>
+                {% else %}
+                    <td><span style="color: #0f5132;font-size: 1.2rem;">Mission en cours</span></td>
+                {% endif %}
+                <td>
+                    <a href="{{ '/profile/commandes/details/' ~ commande.getId() }}">
+                        <button class="btn btn-primary rounded-pill px-3" type="button">Détails</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ '/profile/commandes/delete/' ~ commande.getId() }}">
+                        <button class="btn btn-danger rounded-pill px-3" type="button">Supprimer</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+
+    </table>
+
+</div>
+
+
+
+
+
